@@ -1,0 +1,94 @@
+@font-face {
+font-family: GuardianTextEgyp-Regular;
+src: url("GuardianTextEgyp-Regular.otf") format("opentype");
+}
+
+
+body {
+  background: url(signup3.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+#background-blur {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0.4;
+}
+
+.signup_wrapper {
+  background-color: white;
+  position: absolute;
+  top: 10%;
+  left: 30%;
+  width: 40%;
+  z-index: 1;
+  border-radius: 12px;
+  padding: 5px;
+}
+
+.form-wrapper {
+    margin-top: 20px;
+    position: relative;
+    padding: 0;
+    width: 50%;
+    left: 25%;
+}
+
+.user-form {
+  text-align: center;
+}
+
+.form-input {
+  font-size: 15px;
+  border-radius: 6px;
+  margin: 4px;
+  border: 1px solid #8F8F8F;
+  box-shadow: 0 0 3px #bfbfbf;
+  padding: 4px;
+  outline: none;
+}
+
+
+#home_title {
+  font-family: GuardianTextEgyp-Regular;
+  text-align: center;
+  font-size: 48px;
+  margin: 10px;
+}
+
+#home_subtitle {
+  font-family: GuardianTextEgyp-Regular;
+  text-align: center;
+  font-size: 18px;
+  margin: 5px;
+}
+
+.submit-button {
+  color: white;
+  background-color: #6CB51C;
+  font-size: 20px;
+  border-radius: 6px;
+  margin-top: 10px;
+  border: 1px solid #8F8F8F;
+  box-shadow: 0 0 3px #bfbfbf;
+  padding: 4px 15px;
+  outline: none;
+}
+
+.submit-button:hover {
+  background-color: #559909;
+}
+
+body {
+  color: #373737;
+  font-family: GuardianTextEgyp-Regular;
+}
