@@ -15,3 +15,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+
+app/assets/javascripts/api_key_id.js
