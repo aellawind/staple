@@ -18,3 +18,8 @@
 font-family: GuardianTextEgyp-Regular;
 src: url("GuardianTextEgyp-Regular.otf") format("opentype");
 }
+
+@font-face {
+font-family: GuardianTextEgyp-Black;
+src: url("GuardianTextEgyp-Black.otf") format("opentype");
+}

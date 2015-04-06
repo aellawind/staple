@@ -1,2 +1,19 @@
 <%= stylesheet_link_tag "user-profile" %>
-<h1> <%= @user.name %></h1>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+<nav> 
+  <div id="pageTitle"> Staple </div>
+  <div id="logoutTitle"> <%= link_to 'logout', logout_path, :method => :delete%>
+</div>
+</nav>
+
+<div class="sideBar">
+  <div class="selectedRecipesTitle">My Recipes</div>
+  <div class="selectedRecipes"></div>
+</div>
+
+
+<div class="mainPage">
+  <div class="search">Search</div>
+  <div class="recipeGrid"></div>
+</div>
