@@ -69,6 +69,22 @@ nav {
   height: 200px;
   background-color: red;
   margin: 15px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.recipeTitle {
+  /*position: relative;*/
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  text-align: center;
+  background-color: #bfbfbf;
+  opacity: 0.8;
+  padding: 10px 0px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+
 }
 
 .recipeGrid {
