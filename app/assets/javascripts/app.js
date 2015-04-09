@@ -3,11 +3,12 @@ $( document ).ready(function() {
 
     App.prototype.initialize = function(){
       this.yummlyApi = new YummlyApi();
+      this.view = new View();
       this.yummlyApi.fetchRecipes().then(function(data){
         this.renderGrid(data)        
       }.bind(this));
       this.setupInfiniteScroll();
-      // this.yummlyApi.getRecipe("CREPES-1059201")
+      this.setupSearch();
     }
 
     App.prototype.setupInfiniteScroll = function() {
@@ -28,20 +29,36 @@ $( document ).ready(function() {
       }.bind(this));
     }
 
-
     App.prototype.renderGrid = function(data){
       for (var i = 0; i < data.matches.length; i++) { 
         var imageUrl = ""
         this.yummlyApi.getRecipe(data.matches[i].id).then(function(data) {
-          var recipeItem = new RecipeItem(data.name, 
-                                          data.images[0].hostedLargeUrl,
-                                          data.id);
-          recipeItem.createView();
-          recipeItem.addToGrid();          
+        var recipeItem = new RecipeItem(data.name, 
+                                        data.images[0].hostedLargeUrl,
+                                        data.id);
+        recipeItem.createView();
+        recipeItem.addToGrid();          
         })
       }
     }
-    
+
+    App.prototype.clearGrid = function(){
+      $(".recipeGrid").empty()
+    }
+
+    App.prototype.setupSearch = function(){
+      var that = this;
+      $(".search-button").click(function(){
+          var query = $(".search-input").val();
+          that.yummlyApi.fetchRecipes(query).then(function(data){
+              that.clearGrid()
+              that.renderGrid(data) 
+          })
+      })
+    }
+
+
+
     var app = new App();
     app.initialize();
 });
