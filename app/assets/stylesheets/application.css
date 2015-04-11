@@ -10,6 +10,16 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
+
+
  */
+@font-face {
+font-family: GuardianTextEgyp-Regular;
+src: url("GuardianTextEgyp-Regular.otf") format("opentype");
+}
+
+@font-face {
+font-family: GuardianTextEgyp-Black;
+src: url("GuardianTextEgyp-Black.otf") format("opentype");
+}

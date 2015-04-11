@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
 
   validates :password, length: {minimum: 6}
   has_secure_password
+  has_many :recipes
 end
