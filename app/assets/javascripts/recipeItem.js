@@ -1,4 +1,4 @@
-var RecipeItem = function(name, imageUrl, id, servings, ingredients, recipeUrl) {
+var RecipeItem = function(name, imageUrl, id, recipeUrl, servings, ingredients) {
   this.name = name;
   this.imageUrl = imageUrl;
   this.servings = servings;
@@ -16,10 +16,14 @@ RecipeItem.prototype.createView = function() {
                 "<div class='addRecipeButton'>+</div></div>")
   this.view.css("background", "url(" + this.imageUrl+") no-repeat")
   this.view.css("background-size", "cover")
-  this.view.find(".addRecipeButton").click(function(){
+  this.view.find(".addRecipeButton").click(function(event){
+    event.stopPropagation();
     this.createListView();
     this.addToSideBar();
-  }.bind(this))
+  }.bind(this));
+  this.view.click(function(){
+    window.open(this.recipeUrl, '_blank')
+  }.bind(this));
 }
 
 RecipeItem.prototype.addToGrid = function(view) {
@@ -40,3 +44,4 @@ RecipeItem.prototype.addToSideBar = function(){
     $(".selectedRecipes").append(this.listView);
   }.bind(this));
 }
+

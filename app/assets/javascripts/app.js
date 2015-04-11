@@ -34,7 +34,8 @@ $( document ).ready(function() {
         this.yummlyApi.getRecipe(data.matches[i].id).then(function(data) {
         var recipeItem = new RecipeItem(data.name, 
                                         data.images[0].hostedLargeUrl,
-                                        data.id);
+                                        data.id,
+                                        data.source.sourceRecipeUrl);
         recipeItem.createView();
         recipeItem.addToGrid();          
         })

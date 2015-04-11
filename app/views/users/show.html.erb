@@ -13,7 +13,11 @@
 
 <div class="sideBar">
   <div class="selectedRecipesTitle">My Recipes</div>
-  <div class="selectedRecipes"></div>
+  <div class="selectedRecipes">
+    <% current_user.recipes.each do |recipe| %>
+      <div class='selectedRecipeView'> <%=recipe.name%> </div>
+    <% end %>
+  </div>
 </div>
 
 

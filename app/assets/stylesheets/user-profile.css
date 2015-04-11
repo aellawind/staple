@@ -71,6 +71,7 @@ nav {
   margin: 15px;
   border-radius: 10px;
   position: relative;
+  cursor: pointer;
 }
 
 .recipeTitle {
