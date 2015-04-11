@@ -31,5 +31,12 @@ RecipeItem.prototype.createListView = function(){
 }
 
 RecipeItem.prototype.addToSideBar = function(){
-  $(".selectedRecipes").append(this.listView);
+  var url = "/users/" + userID + "/recipes"
+  $.ajax({
+      url: url,
+      method: "POST",
+      data: {recipe: {name: this.name, yummly_id: this.id}}
+  }).success(function(data){
+    $(".selectedRecipes").append(this.listView);
+  }.bind(this));
 }

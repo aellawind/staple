@@ -38,15 +38,5 @@ YummlyApi.prototype.getRecipe = function (recipeID) {
     });    
 };
 
-// YummlyApi.prototype.search = function (start, query) {
-//     $.ajax({
-//       url: "http://api.yummly.com/v1/api/recipes?_app_id=" + this.apiID + "&_app_key=" + this.apiKey + "&q=" +query + "&requirePictures=true" + "&maxResult=10&start=" + this.start,
-//       method: "GET",
-//       dataType: "json"
-//     })
-//       .done(function(data) {
-//         this.firstResponse = data;
-//     }.bind(this));
-// };
 
 
