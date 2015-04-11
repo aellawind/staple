@@ -3,11 +3,10 @@ $( document ).ready(function() {
 
     App.prototype.initialize = function(){
       this.yummlyApi = new YummlyApi();
-      this.view = new View();
       this.yummlyApi.fetchRecipes().then(function(data){
-        this.renderGrid(data)        
+        this.renderGrid(data) 
+        this.setupInfiniteScroll();
       }.bind(this));
-      this.setupInfiniteScroll();
       this.setupSearch();
     }
 
@@ -53,11 +52,10 @@ $( document ).ready(function() {
           that.yummlyApi.fetchRecipes(query).then(function(data){
               that.clearGrid()
               that.renderGrid(data) 
+              that.setupInfiniteScroll();
           })
       })
     }
-
-
 
     var app = new App();
     app.initialize();
