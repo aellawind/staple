@@ -1,3 +1,8 @@
+//= depend_on_asset "signup3.jpg"
+//= depend_on_asset "GuardianTextEgyp-Regular.otf"
+//= depend_on_asset "GuardianTextEgyp-Black.otf"
+
+
 body {
   background: url(signup3.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
