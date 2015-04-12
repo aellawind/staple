@@ -1,7 +1,6 @@
 var YummlyApi = function() {
-    var keyAndId = new ApiKeyID();
-    this.apiKey = keyAndId[0];
-    this.apiID = keyAndId[1];
+    this.apiKey = API_KEY;
+    this.apiID = API_ID;
     this.firstResponse = null;
     this.maxItems = 20;
     this.start = 0;
