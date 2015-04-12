@@ -9,8 +9,14 @@ class RecipesController < ApplicationController
     end
   end
 
+  def destroy
+    @recipe = Recipe.find_by_yummly_id(params[:id])
+    @recipe.destroy
+    render nothing: true
+  end
+
   private
     def recipe_params
-      params.require(:recipe).permit(:name, :yummly_id)
+      params.require(:recipe).permit(:name, :yummly_id, :recipe_url)
     end
 end

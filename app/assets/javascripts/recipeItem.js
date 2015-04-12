@@ -31,7 +31,24 @@ RecipeItem.prototype.addToGrid = function(view) {
 }
 
 RecipeItem.prototype.createListView = function(){
-  this.listView = $("<div class='selectedRecipeView'>" + this.name + "</div>")
+  this.listView = $("<div data-recipe-url='"+ this.recipeUrl +
+                    "' data-id='" + this.id +
+                    "' class='selectedRecipeView'><div class='selectedRecipeName'>" + 
+                    this.name + "</div><div class='deleteRecipe'>x</div>"+
+                    "</div>")
+  this.listView.click(function(event){
+    if (event.target.className=="deleteRecipe") {
+      var url = "/users/" + userID + "/recipes/" + event.target.parentElement.dataset.id
+      $.ajax({
+        url: url,
+        method: "DELETE"
+      }).done(function(){
+        event.target.parentElement.remove();
+      })
+    } else {
+      window.open(this.recipeUrl, '_blank');
+    }
+  }.bind(this))
 }
 
 RecipeItem.prototype.addToSideBar = function(){
@@ -39,7 +56,7 @@ RecipeItem.prototype.addToSideBar = function(){
   $.ajax({
       url: url,
       method: "POST",
-      data: {recipe: {name: this.name, yummly_id: this.id}}
+      data: {recipe: {name: this.name, yummly_id: this.id, recipe_url: this.recipeUrl}}
   }).success(function(data){
     $(".selectedRecipes").append(this.listView);
   }.bind(this));

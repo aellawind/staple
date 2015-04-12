@@ -30,11 +30,12 @@ YummlyApi.prototype.fetchRecipes = function(query) {
     }
 }
 
-YummlyApi.prototype.getRecipe = function (recipeID) {
+YummlyApi.prototype.getRecipe = function (recipeID, async) {
     return $.ajax({
       url: "http://api.yummly.com/v1/api/recipe/"+ recipeID + "?_app_id=" + this.apiID + "&_app_key=" + this.apiKey,
       method: "GET",
-      dataType: "json"
+      dataType: "json",
+      async: async
     });    
 };
 

@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20150411162917) do
   create_table "recipes", force: :cascade do |t|
     t.string   "name"
     t.string   "yummly_id"
+    t.string   "recipe_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
