@@ -17,4 +17,4 @@
 /tmp
 
 
-app/assets/javascripts/api_key_id.js
+#app/assets/javascripts/api_key_id.js
