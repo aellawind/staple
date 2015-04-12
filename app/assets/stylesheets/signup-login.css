@@ -85,3 +85,17 @@ body {
   background-color: #559909;
 }
 
+.signUpErrors {
+  text-align: center;
+  padding: 10px 0px;
+}
+
+.errorToken {
+  color: red;
+}
+
+.errorsFlash {
+  text-align: center;
+  padding: 10px 0px;  
+}
+.field_with_errors { display: inline; }

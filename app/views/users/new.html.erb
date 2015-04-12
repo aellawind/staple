@@ -5,7 +5,6 @@
   <h2 id="home_subtitle">An easy way to create grocery lists.</h2>
   <div class="form-wrapper">
   <%= form_for(@user, html: {class: "user-form"}) do |f| %>
-    <%= render 'shared/error_messages' %>
     <%= f.text_field :name, placeholder: "Name", class: "form-input" %> <br>
 
     <%= f.email_field :email, placeholder: "Email", class: "form-input" %> <br>
@@ -17,5 +16,6 @@
     <%= f.submit "Sign up", class: "submit-button" %>
     <p> Already signed up? Login in <%=link_to "here", login_path%> </p>
   <% end%>
+  <%= render 'shared/error_messages' %>
   </div>
 </div>
