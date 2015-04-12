@@ -1,4 +1,4 @@
-var RecipeItem = function(name, imageUrl, id, servings, ingredients, recipeUrl) {
+var RecipeItem = function(name, imageUrl, id, recipeUrl, servings, ingredients) {
   this.name = name;
   this.imageUrl = imageUrl;
   this.servings = servings;
@@ -16,10 +16,14 @@ RecipeItem.prototype.createView = function() {
                 "<div class='addRecipeButton'>+</div></div>")
   this.view.css("background", "url(" + this.imageUrl+") no-repeat")
   this.view.css("background-size", "cover")
-  this.view.find(".addRecipeButton").click(function(){
+  this.view.find(".addRecipeButton").click(function(event){
+    event.stopPropagation();
     this.createListView();
     this.addToSideBar();
-  }.bind(this))
+  }.bind(this));
+  this.view.click(function(){
+    window.open(this.recipeUrl, '_blank')
+  }.bind(this));
 }
 
 RecipeItem.prototype.addToGrid = function(view) {
@@ -27,9 +31,34 @@ RecipeItem.prototype.addToGrid = function(view) {
 }
 
 RecipeItem.prototype.createListView = function(){
-  this.listView = $("<div class='selectedRecipeView'>" + this.name + "</div>")
+  this.listView = $("<div data-recipe-url='"+ this.recipeUrl +
+                    "' data-id='" + this.id +
+                    "' class='selectedRecipeView'><div class='selectedRecipeName'>" + 
+                    this.name + "</div><div class='deleteRecipe'>x</div>"+
+                    "</div>")
+  this.listView.click(function(event){
+    if (event.target.className=="deleteRecipe") {
+      var url = "/users/" + userID + "/recipes/" + event.target.parentElement.dataset.id
+      $.ajax({
+        url: url,
+        method: "DELETE"
+      }).done(function(){
+        event.target.parentElement.remove();
+      })
+    } else {
+      window.open(this.recipeUrl, '_blank');
+    }
+  }.bind(this))
 }
 
 RecipeItem.prototype.addToSideBar = function(){
-  $(".selectedRecipes").append(this.listView);
+  var url = "/users/" + userID + "/recipes"
+  $.ajax({
+      url: url,
+      method: "POST",
+      data: {recipe: {name: this.name, yummly_id: this.id, recipe_url: this.recipeUrl}}
+  }).success(function(data){
+    $(".selectedRecipes").append(this.listView);
+  }.bind(this));
 }
+

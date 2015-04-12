@@ -1,4 +1,8 @@
 <%= stylesheet_link_tag "user-profile" %>
+
+<%= javascript_tag do%>
+  userID = <%= current_user.id %>;
+<%end%>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 <nav> 
@@ -9,14 +13,24 @@
 
 <div class="sideBar">
   <div class="selectedRecipesTitle">My Recipes</div>
-  <div class="selectedRecipes"></div>
+  <div class="selectedRecipes">
+    <% current_user.recipes.each do |recipe| %>
+      <div data-recipe-url=<%=recipe.recipe_url%> data-id=<%=recipe.yummly_id%> class='selectedRecipeView'> 
+        <div class="selectedRecipeName">
+          <%=recipe.name%>
+        </div>
+        <div class="deleteRecipe">x</div>
+      </div>
+    <% end %>
+  </div>
+  <div class="makeGroceryList">Create Grocery List</div>
 </div>
 
 
 <div class="mainPage">
   <div class="search">
-    <input type="text" name="search", class="search-input" placeholder="Search recipes...">
-    <input type="submit" class="search-button" value="Submit">
+    <input type="text" name="search", class="search-input" placeholder="Search recipes">
+    <div class="search-button"></div>
   </div>
   <div class="recipeGrid"></div>
 </div>
