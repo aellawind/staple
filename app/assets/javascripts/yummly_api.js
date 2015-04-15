@@ -10,7 +10,7 @@ var YummlyApi = function() {
 YummlyApi.prototype.fetchRecipes = function(query) {
     if (query == undefined) {
       var ajaxCall = $.ajax({
-        url: "http://api.yummly.com/v1/api/recipes?_app_id=" + this.apiID + "&_app_key=" + this.apiKey + "&requirePictures=true" + "&maxResult=" + this.maxItems + "&start=" + this.start,
+        url: "https://api.yummly.com/v1/api/recipes?_app_id=" + this.apiID + "&_app_key=" + this.apiKey + "&requirePictures=true" + "&maxResult=" + this.maxItems + "&start=" + this.start,
         method: "GET",
         dataType: "json"
       });
@@ -18,9 +18,9 @@ YummlyApi.prototype.fetchRecipes = function(query) {
       return ajaxCall
     } else {
       this.start = 0;
-      console.log("http://api.yummly.com/v1/api/recipes?_app_id=" + this.apiID + "&_app_key=" + this.apiKey + "&q=" +query + "&requirePictures=true" + "&maxResult=" + this.maxItems + "&start=" + this.start)
+      // console.log("http://api.yummly.com/v1/api/recipes?_app_id=" + this.apiID + "&_app_key=" + this.apiKey + "&q=" +query + "&requirePictures=true" + "&maxResult=" + this.maxItems + "&start=" + this.start)
       var ajaxCall = $.ajax({
-        url: "http://api.yummly.com/v1/api/recipes?_app_id=" + this.apiID + "&_app_key=" + this.apiKey + "&q=" +query + "&requirePictures=true" + "&maxResult=" + this.maxItems + "&start=" + this.start,
+        url: "https://api.yummly.com/v1/api/recipes?_app_id=" + this.apiID + "&_app_key=" + this.apiKey + "&q=" +query + "&requirePictures=true" + "&maxResult=" + this.maxItems + "&start=" + this.start,
         method: "GET",
         dataType: "json"
       });
@@ -31,7 +31,7 @@ YummlyApi.prototype.fetchRecipes = function(query) {
 
 YummlyApi.prototype.getRecipe = function (recipeID, async) {
     return $.ajax({
-      url: "http://api.yummly.com/v1/api/recipe/"+ recipeID + "?_app_id=" + this.apiID + "&_app_key=" + this.apiKey,
+      url: "https://api.yummly.com/v1/api/recipe/"+ recipeID + "?_app_id=" + this.apiID + "&_app_key=" + this.apiKey,
       method: "GET",
       dataType: "json",
       async: async
